@@ -1,0 +1,1 @@
+# CS2-Esports-World-Cup-2026-Predictor
