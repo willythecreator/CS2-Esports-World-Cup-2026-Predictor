@@ -1,0 +1,8 @@
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+!data/processed/results.csv
+__pycache__/
+*.pyc
+.venv/
