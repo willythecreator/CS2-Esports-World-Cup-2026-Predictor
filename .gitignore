@@ -3,6 +3,8 @@ data/raw/*
 data/processed/*
 !data/processed/.gitkeep
 !data/processed/results.csv
+!data/processed/team_ranking.csv
 __pycache__/
 *.pyc
 .venv/
+*.png
