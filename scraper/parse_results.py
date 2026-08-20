@@ -27,14 +27,16 @@ def parse_results_page(html: str) -> list[dict]:
         team_a = team_cells[0].get_text(strip=True)
         team_b = team_cells[1].get_text(strip=True)
 
-        # Score
-        score_won = match_link.select_one(".score-won")
-        score_lost = match_link.select_one(".score-lost")
-        if not score_won or not score_lost:
+        # Score - grab both spans in DOM order (matches team1/team2 position), NOT by score-won/score-lost since that only indicates who won, not which team's score appears first
+        score_cell = match_link.select_one(".result-score")
+        if not score_cell:
+            continue
+        score_spans = score_cell.find_all("span")
+        if len(score_spans) < 2:
             continue
 
-        score_a_text = score_won.get_text(strip=True)
-        score_b_text = score_lost.get_text(strip=True)
+        score_a_text = score_spans[0].get_text(strip=True)
+        score_b_text = score_spans[1].get_text(strip=True)
 
         # Event name
         event_el = match_link.select_one(".event-name")
